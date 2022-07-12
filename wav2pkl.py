@@ -1,8 +1,4 @@
-#import matplotlib.pyplot as mp
 import scipy.io.wavfile as wav
-#import scipy.signal as sg
-#import numpy as np
-#from PIL import Image
 import numpy as np
 import librosa
 import pickle
@@ -91,21 +87,6 @@ def save_as_pkl_binary(obj, filename):
         pickle.dump(obj, f, pickle.DEFAULT_PROTOCOL)
 
 
-# def convert_wav_to_image(df, source):
-#     #TODO: переделать чтоб считывало файлы из папки и так составлялать список
-#     X = []
-#     # for i, row in tqdm_notebook(df.iterrows()):
-#     #     x = read_as_melspectrogram(conf, source/str(row.fname), trim_long_data=False)
-#     #     x_color = mono_to_color(x)
-#     #     X.append(x_color)
-#     for i in range(len())
-#     return X
-
-# def convert_dataset(df, source_folder, filename):
-#     X = convert_wav_to_image(df, source=source_folder)
-#     save_as_pkl_binary(X, filename)
-#     print(f'Created {filename}')
-#     return X
 def get_default_conf():
     return conf
 
@@ -132,21 +113,6 @@ def divideAudio(audioname, partSize, conf):
         wav.write(f'shorts/{audioname}{int(i / (partSize * fs)) + 1}.wav', fs, part)
     return X
 
-
-# fs, data = wav.read('adele2001.wav')
-# data = data[:,0]
-# trim the first 125 seconds
-# first = data[:int(fs*5)]
-#print(pickle.HIGHEST_PROTOCOL)
 _conf = get_default_conf()
 X = divideAudio('longPlay3.wav', 5, _conf)
 save_as_pkl_binary(X, 'longPlay3.pkl')
-# wav.write('adele_new.wav', fs, first)
-
-
-# data2 = data.ravel()
-# sp, f, t, im = mp.specgram(data2)
-# ax = mp.gca()
-# ax.axes.xaxis.set_visible(False)
-# ax.axes.yaxis.set_visible(False)
-# mp.savefig('adele.png', bbox_inches="tight", transparent=True, pad_inches=0)
